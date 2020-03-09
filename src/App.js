@@ -53,12 +53,22 @@ class App extends React.Component {
     });
   };
 
+  clearPurchased = () => {
+    this.setState({
+      toDoList: []
+    });
+  };
+
   render() {
     return (
       <div>
         <h2>Welcome to your Todo App!</h2>
         <TodoForm addTodo={this.addTodo} />
-        <TodoList toDoList={this.state.toDoList} toogleDone={this.toogleDone} />
+        <TodoList
+          toDoList={this.state.toDoList}
+          toogleDone={this.toogleDone}
+          clearPurchased={this.clearPurchased}
+        />
       </div>
     );
   }
