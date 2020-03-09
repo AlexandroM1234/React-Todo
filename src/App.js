@@ -53,18 +53,6 @@ class App extends React.Component {
     });
   };
 
-  clearPurchased = () => {
-    this.setState({
-      toDoList: this.state.toDoList.map(item => {
-        if (item.completed === true) {
-          return {
-            toDoList: []
-          };
-        }
-      })
-    });
-  };
-
   render() {
     return (
       <div>
