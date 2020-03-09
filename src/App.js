@@ -27,10 +27,10 @@ class App extends React.Component {
     };
   }
 
-  toogleDone = clickedItemId => {
+  toogleDone = clickedTaskId => {
     this.setState({
       toDoList: this.state.toDoList.map(item => {
-        if (item.id === clickedItemId) {
+        if (item.id === clickedTaskId) {
           return {
             ...item,
             completed: !item.completed
@@ -55,7 +55,13 @@ class App extends React.Component {
 
   clearPurchased = () => {
     this.setState({
-      toDoList: []
+      toDoList: this.state.toDoList.map(item => {
+        if (item.completed === true) {
+          return {
+            toDoList: []
+          };
+        }
+      })
     });
   };
 
