@@ -27,12 +27,38 @@ class App extends React.Component {
     };
   }
 
+  toogleDone = clickedItemId => {
+    this.setState({
+      toDoList: this.state.toDoList.map(item => {
+        if (item.id === clickedItemId) {
+          return {
+            ...item,
+            completed: !item.completed
+          };
+        } else {
+          return item;
+        }
+      })
+    });
+  };
+
+  addTodo = newToDo => {
+    const newTask = {
+      task: newToDo,
+      id: new Date(),
+      completed: false
+    };
+    this.setState({
+      toDoList: [...this.state.toDoList, newTask]
+    });
+  };
+
   render() {
     return (
       <div>
         <h2>Welcome to your Todo App!</h2>
-        <TodoForm />
-        <TodoList toDoList={this.state.toDoList} />
+        <TodoForm addTodo={this.addTodo} />
+        <TodoList toDoList={this.state.toDoList} toogleDone={this.toogleDone} />
       </div>
     );
   }
