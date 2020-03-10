@@ -45,15 +45,7 @@ class App extends React.Component {
   clearPurchased = () => {
     this.setState({
       toDoList: this.state.toDoList.filter(item => {
-        if (item.completed === true) {
-          return {
-            toDoList: []
-          };
-        } else {
-          return {
-            toDoList: [this.state.toDoList]
-          };
-        }
+        return item.completed !== true;
       })
     });
   };
